@@ -1,0 +1,22 @@
+{
+    "name": "eilem/1-2-3-Testando-4",
+    "description": "Documentação de Teste",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eilem",
+            "email": "eilem.rei@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "doctrine/orm": "*",
+        "slim/slim": "2.*"
+    },
+            
+    "autoload":{
+    	"psr-0":{
+	   "ProjetoTeste":"ProjetoTeste"
+	}
+    }
+}
