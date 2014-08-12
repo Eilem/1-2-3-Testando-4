@@ -16,11 +16,17 @@ Class PlanoDeTeste{
      */
     protected $id;
     
-    
+    /**
+     *
+     * @var type 
+     */
     protected $idCasoDeUso;
     
     
-    
+    /**
+     *
+     * @var type 
+     */
     protected $nome;
     
     /**
