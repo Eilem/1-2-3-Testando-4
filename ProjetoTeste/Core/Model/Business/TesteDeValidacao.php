@@ -16,87 +16,46 @@ Class TesteDeValidacao{
      */
     protected $id;
     
+    
     /**
-     *
+     * Coleção de Caso de teste as quais o teste de validação está relacionado
      * @var type 
+     * 
+     * @ManyToMany(targetEntity="ProjetoTeste\Core\Model\Business\CasoDeTeste", mappedBy="colTesteDeValidacao")
      */
-    protected $campo;
+    protected $colCasoDeTeste;
     
     /**
      *
      * @var type 
+     * 
+     * @Column(name="campo" ,type="string")
+     */
+    protected $campo;
+    
+    /**
+     * Tipo de conteudo que o campo a ser validado está recebendo 
+     * @var type
+     * 
+     * @Column(name="tipo" ,type="string") 
      */
     protected $tipo;
     
     /**
      *
      * @var type 
+     * 
+     * @Column(name="resultado" ,type="string")
      */
     protected $resultado;
     
     /**
      *
      * @var type 
+     * 
+     * @Column(name="obrigatorio" ,type="string")
      */
-    protected $obrigatorio;
-    
-    /**
-     *
-     * @var type 
-     */
-    protected $planoDeTeste;
-    
-    public function obterId() {
-        return $this->id;
-    }
-
-
-    public function obterCampo() {
-        return $this->campo;
-    }
-
-    public function definirCampo($campo) {
-        $this->campo = $campo;
-        return $this;
-    }
-
-    public function obterTipo() {
-        return $this->tipo;
-    }
-
-    public function definirTipo($tipo) {
-        $this->tipo = $tipo;
-        return $this;
-    }
-
-    public function obterResultado() {
-        return $this->resultado;
-    }
-
-    public function definirResultado($resultado) {
-        $this->resultado = $resultado;
-        return $this;
-    }
-
-    public function obterObrigatorio() {
-        return $this->obrigatorio;
-    }
-
-    public function definirObrigatorio($obrigatorio) {
-        $this->obrigatorio = $obrigatorio;
-        return $this;
-    }
-
-    public function obterPlanoDeTeste() {
-        return $this->planoDeTeste;
-    }
-
-    public function definirPlanoDeTeste($planoDeTeste) {
-        $this->planoDeTeste = $planoDeTeste;
-        return $this;
-    }
-
-
+    protected $obrigatorio;   
     
     
 }

@@ -5,8 +5,15 @@
  */
 namespace ProjetoTeste\Core\Model\Business;
 
+use ProjetoTeste\Core\Model\Business\Teste as DocumentacaoTeste,
+    ProjetoTeste\Core\Model\Business\CasoDeUso as CasoDeUso;
+
+/**
+ * @Entity
+ * @Table(name="caso_de_teste")
+ */
 Class CasoDeTeste{
-         
+    
     /**
      * Identificação do Caso de teste
      * @var int 
@@ -17,67 +24,58 @@ Class CasoDeTeste{
     protected $id;
     
     /**
-     *
-     * @var type 
+     * Caso de Uso para o qual o Caso de teste foi descrito
+     * @var \ProjetoTeste\Core\Model\Business\CasoDeUso
+     * 
+     * @OneToOne(tagetEntity="\ProjetoTeste\Core\Model\Business\CasoDeUso")
+     * @JoinColumn(name="caso_de_uso_id" , referencedColumnName="id")
      */
-    protected $planoDeTeste;
+    protected $casoDeUso;
     
-    protected $passos;
+    /**
+     * Documentação de teste à qual o caso de teste pertence
+     * @var \ProjetoTeste\Core\Model\Business\Teste
+     * 
+     * @ManyToOne(targetEntity="ProjetoTeste\Core\Model\Business\Teste" , inversedBy="colCasoDeUso")
+     * @JoinColumn(name="teste_id", refencedBy="id")
+     */
+    protected $documentacaoTeste;
+
+    /**
+     * Nome do caso de teste
+     * @var string
+     * 
+     * @Column(name="nome", type="string")
+     */
+    protected $nome;
     
-    protected $resultadoEsperado;
+    /**
+     * Objetivo do caso de teste
+     * @var string
+     * 
+     * @Column(name="objetivo", type="string")
+     */
+    protected $objetivo;
     
-    protected $preCondicao;
+    /**
+     * Coleçaõ de Itens de Teste que o caso de Teste Possui
+     * @todo one to many relacionamento com classe caso de teste
+     * @var ArrayCollection
+     * 
+     * @OneToMany(targetEntity="ProjetoTeste\Core\Model\Business\ItemDeTeste" , mappedBy="casoDeTeste")
+     */
+    protected $colItemDeTeste;    
     
-    protected $outraPreparacao;
     
-    public function obterId() {
-        return $this->id;
-    }
-
-    public function obterPlanoDeTeste() {
-        return $this->planoDeTeste;
-    }
-
-    public function definirPlanoDeTeste($planoDeTeste) {
-        $this->planoDeTeste = $planoDeTeste;
-        return $this;
-    }
-
-    public function obterPassos() {
-        return $this->passos;
-    }
-
-    public function definirPassos($passos) {
-        $this->passos = $passos;
-        return $this;
-    }
-
-    public function obterResultadoEsperado() {
-        return $this->resultadoEsperado;
-    }
-
-    public function definirResultadoEsperado($resultadoEsperado) {
-        $this->resultadoEsperado = $resultadoEsperado;
-        return $this;
-    }
-
-    public function obterPreCondicao() {
-        return $this->preCondicao;
-    }
-
-    public function definirPreCondicao($preCondicao) {
-        $this->preCondicao = $preCondicao;
-        return $this;
-    }
-
-    public function obterOutraPreparacao() {
-        return $this->outraPreparacao;
-    }
-
-    public function definirOutraPreparacao($outraPreparacao) {
-        $this->outraPreparacao = $outraPreparacao;
-        return $this;
-    }
-
+    /**
+     * @todo many to many relacionamento com teste de validação
+     * @var ArrayCollection
+     * 
+     * @ManyToMany(targetEntity="ProjetoTeste\Core\Model\Business\TesteDeValidacao", inversedBy="colCasoDeUso")
+     */
+    protected $colTesteDeValidacao;
+    
+    
+    
     
 }

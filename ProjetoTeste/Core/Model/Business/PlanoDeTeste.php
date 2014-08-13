@@ -5,90 +5,49 @@
  */
 namespace ProjetoTeste\Core\Model\Business;
 
-Class PlanoDeTeste{
+/**
+ * Classe Plano de teste
+ * 
+ * @Entity
+ * @Table(name="plano_de_teste")
+ */
+class PlanoDeTeste{
     
     /**
      * Identificação do Plano de teste
-     * @var int 
+     * @var int
      * 
-     * @Id @Column( name = "id" ,type="integer", nullable = FALSE)
-     * @GeneratedValue
+     * @Id
+     * @GeneretedValue
+     * @Column(name="id" , type="integer")
      */
     protected $id;
     
     /**
      *
-     * @var type 
-     */
-    protected $idCasoDeUso;
-    
-    
-    /**
-     *
-     * @var type 
+     * @var string 
+     * 
+     * @Column(name="nome" , type="string")
      */
     protected $nome;
     
     /**
-     * @todo one to many relacionamento com classe caso de teste
-     * @var type 
+     *
+     * @var string 
+     * 
+     * @Column(name="nome" , type="string")
      */
-    protected $colCasoDeTeste;
+    protected $descricao;
     
     /**
-     * @todo many to many relacionamento com teste de validação
-     * @var type 
+     *
+     * @var  
+     * 
+     * @todo relacionamento com  Classe teste
+     * 
+     * @OneToOne(targetEntity="ProjetoTeste\Core\Model\Business\Teste")
+     * @JoinColumn(name="teste_id" , referencedColumnName="id" )
      */
-    protected $colTesteDeValidacao;
-    
-    
-    
-    
-    public function obterId() {
-        return $this->id;
-    }
-
-    public function definirId($id) {
-        $this->id = $id;
-        return $this;
-    }
-
-    public function obterIdCasoDeUso() {
-        return $this->idCasoDeUso;
-    }
-
-    public function definirIdCasoDeUso($idCasoDeUso) {
-        $this->idCasoDeUso = $idCasoDeUso;
-        return $this;
-    }
-
-    public function obterNome() {
-        return $this->nome;
-    }
-
-    public function definirNome($nome) {
-        $this->nome = $nome;
-        return $this;
-    }
-
-    public function obterColCasoDeTeste() {
-        return $this->colCasoDeTeste;
-    }
-
-    public function definirColCasoDeTeste(type $colCasoDeTeste) {
-        $this->colCasoDeTeste = $colCasoDeTeste;
-        return $this;
-    }
-
-    public function obterColTesteDeValidacao() {
-        return $this->colTesteDeValidacao;
-    }
-
-    public function definirColTesteDeValidacao(type $colTesteDeValidacao) {
-        $this->colTesteDeValidacao = $colTesteDeValidacao;
-        return $this;
-    }
-
-
+    protected $documentacaoTeste;
     
 }
