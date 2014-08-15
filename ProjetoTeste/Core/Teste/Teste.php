@@ -17,9 +17,6 @@ use ProjetoTeste\Core\Model\Business\CasoDeTeste as CasoDeTeste,
 class Teste extends Documentacao{
     
     public function __construct() {
-        
-        #por ter dependência de um projeto , receber o projeto ao qual pertence a Docuemtnação de teste no paramentro do constutor
-        
         $this->colCasoDeTeste = new ArrayCollection();
     }
 

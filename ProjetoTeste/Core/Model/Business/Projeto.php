@@ -5,6 +5,9 @@
  */
 namespace ProjetoTeste\Core\Model\Business;
 
+use ProjetoTeste\Core\Model\Business\Teste as DocTeste,
+    ProjetoTeste\Core\Model\Business\Software as DocSoftware;
+
 /**
  * Classe que representa a entidade Projeto
  * @Entity
@@ -36,55 +39,99 @@ Class Projeto{
      * @Column (name="descricao")
      */
     protected $descricao;
-
-    
-    
     
     /**
+     * Documentação de Software pertencente ao Projeto
+     * @var \ProjetoTeste\Core\Model\Business\Software
      * 
-     * @return type
+     * @todo Doctrine
      */
-    public function obterId() {
+    protected $documentacaoSoftware;
+        
+    /**
+     * Documentação de Teste pertencente ao Projeto
+     * @var \ProjetoTeste\Core\Model\Business\Teste
+     * 
+     * @todo Doctrine
+     */
+    protected $documentacaoTeste;
+ 
+    
+    protected function obterId() {
         return $this->id;
     }
 
-    /**
-     * 
-     * @return type
-     */
-    public function obterNome() {
+    protected function obterNome() {
         return $this->nome;
     }
 
-    /**
-     * 
-     * @param type $nome
-     * @return \ProjetoTeste\Core\Model\Business\Projeto
-     */
-    public function definirNome($nome) {
+    protected function definirNome($nome) {
         $this->nome = $nome;
         return $this;
     }
 
-    /**
-     * 
-     * @return type
-     */
-    public function obterDescricao() {
+    protected function obterDescricao() {
         return $this->descricao;
     }
 
-    /**
-     * 
-     * @param type $descricao
-     * @return \ProjetoTeste\Core\Model\Business\Projeto
-     */
-    public function definirDescricao($descricao) {
+    protected function definirDescricao($descricao) {
         $this->descricao = $descricao;
         return $this;
     }
 
+    /**
+     * 
+     * @return type
+     */
+    protected function obterDocumentacaoSoftware() {
+        return $this->documentacaoSoftware;
+    }
+
+    /**
+     * 
+     * @param \ProjetoTeste\Core\Model\Business\Software $documentacaoSoftware
+     * @return \ProjetoTeste\Core\Model\Business\Projeto
+     */
+    protected function definirDocumentacaoSoftware(\ProjetoTeste\Core\Model\Business\Software $documentacaoSoftware) {
+        $this->documentacaoSoftware = $documentacaoSoftware;
+        return $this;
+    }
+
+    protected function obterDocumentacaoTeste() {
+        return $this->documentacaoTeste;
+    }
+
+    /**
+     * 
+     * @param \ProjetoTeste\Core\Model\Business\Teste $documentacaoTeste
+     * @return \ProjetoTeste\Core\Model\Business\Projeto
+     */
+    protected function definirDocumentacaoTeste(\ProjetoTeste\Core\Model\Business\Teste $documentacaoTeste) {
+        $this->documentacaoTeste = $documentacaoTeste;
+        return $this;
+    }
     
+    /**
+     * 
+     * @return \ProjetoTeste\Core\Model\Business\Teste
+     */
+    protected function obterColDocumentacao(){
+        $colDocumentacao = array();
+        
+        $docSoftware = $this->obterDocumentacaoSoftware();
+        $docTeste = $this->obterDocumentacaoTeste();
+        
+        if( $docSoftware instanceof DocSoftware  ){
+            if( $docTeste instanceof DocTeste){
+                
+                $colDocumentacao[] = $docSoftware; 
+                $colDocumentacao[] = $docTeste; 
+            }else{
+                $colDocumentacao[] = $docTeste; 
+            }
+        }        
+        return $colDocumentacao;
+    }
     
-    
+
 }

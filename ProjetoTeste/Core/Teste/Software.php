@@ -19,9 +19,6 @@ class Software extends Documentacao{
      * Método construtor 
      */
     public function __construct() {
-        
-        #por ter dependência de um projeto, receber o projeto ao qual pertence a Documentação de Software no paramentro do constutor
-        
         $this->colCasoDeUso = new ArrayCollection();
     }
     

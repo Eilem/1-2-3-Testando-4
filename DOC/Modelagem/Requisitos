@@ -1,0 +1,16 @@
+------------------------------------------
+* Requisitos do Sistema de documentação *
+------------------------------------------
+
+- O sistema de documentação controle muitos projetos de documentação
+
+- Um projeto possui "Documentações" , que podem ser de "Teste" ou de "Software"
+
+- "Documentação de Software" possui "Caso de Uso"
+- Um "caso de USo" está relacionado a um "Caso de teste"
+
+- Uma "documentaçaõ de Teste" possui um "Plano de Teste"
+- Um "plano de teste" é criado para uma "Documentaçaõ de Teste"
+- 
+
+
