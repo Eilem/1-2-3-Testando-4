@@ -6,13 +6,22 @@ $vendor =  dirname( dirname( dirname( dirname( __DIR__ ) ) ) ).DIRECTORY_SEPARAT
 include_once $vendor;
 
 
-$p = new ProjetoTeste\Core\Model\Business\Projeto();
 
 $soft = new ProjetoTeste\Core\Model\Business\Software();
+$soft->definirNome("Nome da Doc de software");
+
 
 $teste = new ProjetoTeste\Core\Model\Business\Teste();
+
+$p = new ProjetoTeste\Core\Model\Business\Projeto();
+$p->definirNome("meu Projeto");
+
+
 
 $p->definirDocumentacaoTeste($teste);
 $p->definirDocumentacaoSoftware($soft);
 
-var_dump($p->obterColDocumentacao());
+$col = $p->obterColDocumentacao();
+
+var_dump($p->obterDocumentacaoSoftware());
+//var_dump($p->obterDocumentacaoTeste());

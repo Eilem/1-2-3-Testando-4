@@ -46,6 +46,14 @@ abstract class Documentacao{
     protected $projeto;
     
     /**
+     * Nome da Documentação
+     * @var string
+     * 
+     * @Column( name="nome" )
+     */
+    protected $nome;
+
+    /**
      * Constante que define o tipo de documentacao para teste
      */
     const TESTE = '1';
@@ -81,5 +89,24 @@ abstract class Documentacao{
         return $this;
     }
     
+    /**
+     *  Obtem o Nome da Documentação
+     * @return string
+     */
+    public function obterNome() {
+        return $this->nome;
+    }
+
+    /**
+     * Define o Nome da Documentação
+     * @param string $nome
+     * @return \ProjetoTeste\Core\Model\Business\Documentacao
+     */
+    public function definirNome($nome) {
+        $this->nome = $nome;
+        return $this;
+    }
+
+
 
 }
