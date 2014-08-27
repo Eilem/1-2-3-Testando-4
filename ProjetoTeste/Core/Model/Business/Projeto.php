@@ -16,7 +16,7 @@ use ProjetoTeste\Core\Model\Business\Teste as DocTeste,
 Class Projeto{
     
     public function __construct() {
-        ;
+        
     }
     
     /**

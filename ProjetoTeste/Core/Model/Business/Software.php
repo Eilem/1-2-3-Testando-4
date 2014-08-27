@@ -5,7 +5,8 @@
  */
 namespace ProjetoTeste\Core\Model\Business;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\ArrayCollection,
+    ProjetoTeste\Core\Model\Business\CasoDeUso as CasoDeUso;
 
 /**
  * Classe de Documentação de Software
@@ -31,7 +32,7 @@ class Software extends Documentacao{
      * 
      * @OneToMany(targetEntity="ProjetoTeste\Core\Model\Business\CasoDeUso" , mappedBy="documentacaoSoftware")
      */
-    protected $colCasoDeUso;
+    public $colCasoDeUso;
     
     /**
      * 
@@ -49,10 +50,27 @@ class Software extends Documentacao{
      * 
      * @todo ver dependencias!!! de relacionamento!!!
      */
-    public function definirColCasoDeUso(array $colCasoDeUso) {
-        $this->colCasoDeUso = $colCasoDeUso;
+    public function definirColCasoDeUso( array $colCasoDeUso ) {
+        $this->colCasoDeUso = new ArrayCollection();
+        foreach ( $colCasoDeUso as $casoDeUso ) {
+            $this->colCasoDeUso->add( $casoDeUso );
+            $casoDeUso->definirDocumentacaoSoftware( $this );
+        }
+        return $this;
+    }    
+    
+    /**
+     * 
+     * @param \ProjetoTeste\Core\Model\Business\CasoDeUso $casoDeUso
+     * @return \ProjetoTeste\Core\Model\Business\Software
+     */
+    public function adicionarCasoDeUso( CasoDeUso $casoDeUso ){
+        if( !$this->colCasoDeUso->contains($casoDeUso) ){
+            $this->colCasoDeUso->add($casoDeUso);
+            $casoDeUso->definirDocumentacaoSoftware($this); 
+        }
         return $this;
     }
-
+    
 
 }

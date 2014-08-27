@@ -64,7 +64,7 @@ Class CasoDeUso{
      * @param type $nome
      * @return \ProjetoTeste\Core\Model\Business\CasoDeUso
      */
-    public function definirNome($nome) {
+    public function definirNome( $nome ) {
         $this->nome = $nome;
         return $this;
     }
@@ -82,16 +82,16 @@ Class CasoDeUso{
      * @param type $identificacao
      * @return \ProjetoTeste\Core\Model\Business\CasoDeUso
      */
-    public function definirIdentificacao($identificacao) {
+    public function definirIdentificacao( $identificacao ) {
         $this->identificacao = $identificacao;
         return $this;
     }
     
     /**
-     * 
-     * @return type
+     * Obtém a Documentação de Software ao qual a Documenta
+     * @return \ProjetoTeste\Core\Model\Business\Software
      */
-    public function getDocumentacaoSoftware() {
+    public function obterDocumentacaoSoftware() {
         return $this->documentacaoSoftware;
     }
     
@@ -100,9 +100,12 @@ Class CasoDeUso{
      * @param \ProjetoTeste\Core\Model\Business\Software $documentacaoSoftware
      * @return \ProjetoTeste\Core\Model\Business\CasoDeUso
      */
-    public function setDocumentacaoSoftware(DocumentacaoSoftware $documentacaoSoftware) {
+    public function definirDocumentacaoSoftware( DocumentacaoSoftware $documentacaoSoftware ) {
+        
         $this->documentacaoSoftware = $documentacaoSoftware;
+        $documentacaoSoftware->adicionarCasoDeUso( $this );
         return $this;
     }
     
+  
 }

@@ -2,7 +2,6 @@
 
 $vendor =  dirname( dirname( dirname( dirname( __DIR__ ) ) ) ).DIRECTORY_SEPARATOR."vendor".DIRECTORY_SEPARATOR."autoload.php";
 
-
 include_once $vendor;
 
 
@@ -15,8 +14,6 @@ $teste = new ProjetoTeste\Core\Model\Business\Teste();
 
 $p = new ProjetoTeste\Core\Model\Business\Projeto();
 $p->definirNome("meu Projeto");
-
-
 
 $p->definirDocumentacaoTeste($teste);
 $p->definirDocumentacaoSoftware($soft);
